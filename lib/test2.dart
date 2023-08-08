@@ -1,26 +1,24 @@
 import 'package:flutter/material.dart';
 import 'home_screen.dart';
-import 'family_tree_screen.dart';
-import 'family_member_details_screen.dart';
+import 'route_generator.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const FamilyTreeApp());
 }
 
-class MyApp extends StatelessWidget {
+class FamilyTreeApp extends StatelessWidget {
+  const FamilyTreeApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'My App',
+      title: 'AKKALLA FAMILY',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.green,
       ),
       initialRoute: '/',
-      routes: {
-        '/': (context) => HomeScreen(),
-        '/familyTree': (context) => FamilyTreeScreen(),
-        '/familyMemberDetails': (context) => FamilyMemberDetailsScreen(),
-      },
+      onGenerateRoute: RouteGenerator.generateRoute,
+      debugShowCheckedModeBanner: false,
     );
   }
 }

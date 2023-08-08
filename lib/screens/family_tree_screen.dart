@@ -35,10 +35,31 @@ class _FamilyTreePageState extends State<FamilyTreePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //appBar: AppBar(
-      //  title: Text('Family Tree Page'),
-      //),
-      body: FutureBuilder<FamilyTreeMember>(
+      body: SafeArea(
+        child: Column(
+          children: [
+            Row(
+              children: [
+                if (Navigator.canPop(context))
+                  IconButton(
+                    icon: Icon(Icons.arrow_back),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                
+                Spacer(), // Adds a flexible space
+                if (Navigator.canPop(context))
+                  IconButton(
+                    icon: Icon(Icons.home),
+                    onPressed: () {
+                      Navigator.popUntil(context, (route) => route.isFirst);
+                    },
+                  ),
+              ],
+            ),
+            Expanded(
+              child: FutureBuilder<FamilyTreeMember>(
         future: _familyTreeMemberFuture,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
@@ -85,6 +106,10 @@ class _FamilyTreePageState extends State<FamilyTreePage> {
             );
           }
         },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

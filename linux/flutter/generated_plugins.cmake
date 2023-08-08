@@ -3,6 +3,7 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
+  get_mac_address
   url_launcher_linux
 )
 
