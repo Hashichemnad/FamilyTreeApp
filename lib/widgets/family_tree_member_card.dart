@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/family_tree_member.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class FamilyTreeMemberCard extends StatelessWidget {
   final FamilyTreeMember familyTreeMember;
@@ -20,13 +21,21 @@ class FamilyTreeMemberCard extends StatelessWidget {
             Container(
               width: 80,
               height: 80,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                image: DecorationImage(
-                  image: AssetImage(familyTreeMember.profileImageUrl),
+              child: CachedNetworkImage(
+                  imageUrl: familyTreeMember.profileImageUrl,
+                  imageBuilder: (context, imageProvider) => Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                        image: imageProvider,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  placeholder: (context, url) => CircularProgressIndicator(), // Show a loading indicator while loading the image
+                  errorWidget: (context, url, error) => Icon(Icons.error), // Show an error icon if the image fails to load
                   fit: BoxFit.cover,
                 ),
-              ),
             ),
             SizedBox(width: 16),
             Expanded(

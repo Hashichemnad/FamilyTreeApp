@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:url_launcher/url_launcher_string.dart';
+import 'package:url_launcher/url_launcher.dart'; // Import url_launcher package
 import '../models/family_member.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
@@ -72,8 +71,8 @@ class FamilyMemberCard extends StatelessWidget {
       path: phoneNumber,
     );
 
-    if (await canLaunchUrlString(phoneCallUri.toString())) {
-      await launchUrlString(phoneCallUri.toString());
+    if (await canLaunchUrl(phoneCallUri)) { // Use canLaunch function
+      await launchUrl(phoneCallUri); // Use launch function
     } else {
       throw 'Could not launch phone call: $phoneCallUri';
     }

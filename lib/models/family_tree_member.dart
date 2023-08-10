@@ -26,7 +26,7 @@ class FamilyTreeMember {
     return FamilyTreeMember(
       id: json['id'],
       name: json['name'],
-      profileImageUrl:'../assets/images/header_image.png',
+      profileImageUrl: json['profileImageUrl'],
       contact: json['contact'],
       education: json['education'],
       whatsapp: json['whatsapp'],

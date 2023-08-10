@@ -144,14 +144,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  get_mac_address:
-    dependency: "direct main"
-    description:
-      name: get_mac_address
-      sha256: ab20a68b43a5f377fdc29cb925f2f26ade8d50c1f64505ab47be897183c1c7b3
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.0.2"
   http:
     dependency: "direct main"
     description:
@@ -461,22 +453,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.4"
-  wifi_info_flutter:
-    dependency: "direct main"
-    description:
-      name: wifi_info_flutter
-      sha256: "9662240e4edb8a91b572efa0b4e4c72ee644e25611525633580afc3257386a48"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.2"
-  wifi_info_flutter_platform_interface:
-    dependency: transitive
-    description:
-      name: wifi_info_flutter_platform_interface
-      sha256: "844a9a5f23d1a639cf5fd8b4f007ee4d60526ad63beb35e1cbe2512f1a9921e4"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.1"
   win32:
     dependency: transitive
     description:

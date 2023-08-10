@@ -26,6 +26,9 @@ apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
+    lintOptions {
+        checkReleaseBuilds false
+    }
     namespace "com.example.my_app"
     compileSdkVersion flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
@@ -53,7 +56,14 @@ android {
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
-
+    signingConfigs {
+        release {
+            storeFile file('akkalla-family.keystore')
+            storePassword '123456'
+            keyAlias 'akkalla-family'
+            keyPassword '123456'
+        }
+    }
     buildTypes {
         release {
             // TODO: Add your own signing config for the release build.

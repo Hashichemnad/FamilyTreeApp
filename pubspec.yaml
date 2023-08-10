@@ -1,8 +1,12 @@
-name: my_app
-description: A new Flutter project.
+name: Akkalla_Family
+description: Akkalla Family
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon/icon.png"
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -38,8 +42,8 @@ dependencies:
   http: ^1.1.0
   url_launcher: ^6.1.12
   cached_network_image: ^3.2.3
-  wifi_info_flutter: ^2.0.2
-  get_mac_address: ^0.0.2
+  # wifi_info_flutter: ^2.0.2
+  # get_mac_address: ^0.0.2
 
 dev_dependencies:
   flutter_test:

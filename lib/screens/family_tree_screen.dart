@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../models/family_tree_member.dart';
 import '../widgets/family_tree_member_card.dart';
 import '../services/family_member_tree_service.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class FamilyTreePage extends StatefulWidget {
   final String familyMemberId;
@@ -156,13 +157,22 @@ class ChildrenCard extends StatelessWidget {
               Container(
                 width: 64,
                 height: 64,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  image: DecorationImage(
-                    image: AssetImage(child.profileImageUrl),
-                    fit: BoxFit.cover,
+                child: CachedNetworkImage(
+                  imageUrl: child.profileImageUrl,
+                  imageBuilder: (context, imageProvider) => Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                        image: imageProvider,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
                   ),
+                  placeholder: (context, url) => CircularProgressIndicator(), // Show a loading indicator while loading the image
+                  errorWidget: (context, url, error) => Icon(Icons.error), // Show an error icon if the image fails to load
+                  fit: BoxFit.cover,
                 ),
+                
               ),
               SizedBox(width: 16),
               Expanded(

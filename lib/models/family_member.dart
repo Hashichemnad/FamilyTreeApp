@@ -18,7 +18,7 @@ class FamilyMember {
       id: json['id'],
       name: json['name'],
       fatherName: json['fatherName'],
-      profileImageUrl: '../assets/images/header_image.png',
+      profileImageUrl: json['profileImageUrl'],
       contact: json['contact'],
     );
   }

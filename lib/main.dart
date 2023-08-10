@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/screens/home_screen.dart';
+import '../screens/home_screen.dart';
 
 void main() {
   runApp(const FamilyTreeApp());
