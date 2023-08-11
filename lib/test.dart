@@ -58,22 +58,22 @@ class _HomeScreenState extends State<HomeScreen> {
       body: _pages[_currentIndex],
       bottomNavigationBar: _isAuthenticated
           ? BottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: _onTabTapped,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.group),
-            label: 'Family Directory',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.family_restroom),
-            label: 'Family Tree',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.update),
-            label: 'Updates',
-          ),
-        ],
+              currentIndex: _currentIndex,
+              onTap: _onTabTapped,
+              items: const [
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.group),
+                  label: 'Family Directory',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.family_restroom),
+                  label: 'Family Tree',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.update),
+                  label: 'Updates',
+                ),
+              ],
             )
           : null, // Hide the bottom navigation bar if not authenticated
     );

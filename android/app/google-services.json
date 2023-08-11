@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "56991456275",
+    "project_id": "akkalla-family",
+    "storage_bucket": "akkalla-family.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:56991456275:android:5627ad97abdea65b9433e6",
+        "android_client_info": {
+          "package_name": "com.spidev.akkalla"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "56991456275-ad10rtjtho7ukoacgms7sni95cv1ik99.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.spidev.akkalla",
+            "certificate_hash": "c5200a50dc0760e132d8ac548a1b5e1d16c91ba8"
+          }
+        },
+        {
+          "client_id": "56991456275-olsjehkr5tee2kt5fh53d4jpdue0n0bf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBI03CXmBPvQelJgpCuAmr_LZa3bRKGfcE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "56991456275-5pv14mgkemh3dll8eer264t5qgevoud1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

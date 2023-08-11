@@ -8,7 +8,7 @@ class NoticeService {
   NoticeService(this.baseUrl);
 
   Future<List<Notice>> getNoticeList() async {
-    final response = await http.get(Uri.parse('$baseUrl/notices'));
+    final response = await http.get(Uri.parse('$baseUrl'));
     if (response.statusCode == 200) {
       final jsonData = json.decode(response.body);
       final List<Notice> notices = [];
