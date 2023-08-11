@@ -3,7 +3,7 @@ import 'family_directory_screen.dart';
 import 'family_tree_screen.dart';
 import 'updates_screen.dart';
 import 'login_page.dart'; // Import the LoginPage
-import '../services/auth_service.dart';
+// import '../services/auth_service.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -14,20 +14,20 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
-  bool _isAuthenticated = false;
+  bool _isAuthenticated = true;
 
   @override
   void initState() {
     super.initState();
-    _checkAuthentication();
+    // _checkAuthentication();
   }
 
-  Future<void> _checkAuthentication() async {
-    bool isAuthenticated = await AuthService().isAuthenticated();
-    setState(() {
-      _isAuthenticated = isAuthenticated;
-    });
-  }
+  // Future<void> _checkAuthentication() async {
+  //   bool isAuthenticated = await AuthService().isAuthenticated();
+  //   setState(() {
+  //     _isAuthenticated = isAuthenticated;
+  //   });
+  // }
 
   final List<Widget> _pages = [
     FamilyDirectoryPage(),
@@ -46,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Row(
           children: [
             Image.asset(
-              'images/logo.png',
+              '../assets/images/logo.png',
               height: 30,
             ),
             const SizedBox(width: 8),

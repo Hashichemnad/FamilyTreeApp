@@ -4,7 +4,10 @@ import '../widgets/family_member_card.dart';
 import '../services/family_member_service.dart';
 
 class FamilyDirectoryPage extends StatefulWidget {
+  const FamilyDirectoryPage({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _FamilyDirectoryPageState createState() => _FamilyDirectoryPageState();
 }
 
@@ -40,7 +43,7 @@ class _FamilyDirectoryPageState extends State<FamilyDirectoryPage> {
         _filteredFamilyMembers.addAll(familyMembers);
       });
     } catch (e) {
-      print('Error fetching family members: $e');
+      //print('Error fetching family members: $e');
     }
   }
 

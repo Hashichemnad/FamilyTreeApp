@@ -14,11 +14,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "56991456275-ad10rtjtho7ukoacgms7sni95cv1ik99.apps.googleusercontent.com",
+          "client_id": "56991456275-29nnphisqj548sr0mbfo2uvtii65ktpv.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.spidev.akkalla",
-            "certificate_hash": "c5200a50dc0760e132d8ac548a1b5e1d16c91ba8"
+            "certificate_hash": "a0046b25d5d8a01f08865fbc3604d521d4a51a62"
           }
         },
         {

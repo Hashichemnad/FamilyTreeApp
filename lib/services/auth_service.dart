@@ -12,15 +12,24 @@ class AuthService {
   }
 
   Future<User?> signInWithGoogle() async {
+    print('test');
     try {
       final GoogleSignInAccount? googleSignInAccount = await _googleSignIn.signIn();
+      print('test1');
+      print(googleSignInAccount);
       if (googleSignInAccount != null) {
         final GoogleSignInAuthentication googleSignInAuthentication = await googleSignInAccount.authentication;
+        print('test2');
+        print(googleSignInAuthentication);
         final AuthCredential credential = GoogleAuthProvider.credential(
           accessToken: googleSignInAuthentication.accessToken,
           idToken: googleSignInAuthentication.idToken,
         );
+        print('test3');
+        print(credential);
         final UserCredential authResult = await _auth.signInWithCredential(credential);
+        print('test4');
+        print(authResult);
         final User? user = authResult.user;
         return user;
       }

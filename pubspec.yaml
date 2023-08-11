@@ -48,10 +48,6 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  firebase_core: ^2.15.0
-  firebase_messaging: ^14.6.5
-  firebase_auth: ^4.7.2
-  google_sign_in: ^6.1.4
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
