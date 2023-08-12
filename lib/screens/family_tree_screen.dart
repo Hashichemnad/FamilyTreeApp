@@ -36,6 +36,7 @@ class _FamilyTreePageState extends State<FamilyTreePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       body: SafeArea(
         child: Column(
           children: [
@@ -43,6 +44,7 @@ class _FamilyTreePageState extends State<FamilyTreePage> {
               children: [
                 if (Navigator.canPop(context))
                   IconButton(
+                    color: Colors.white,
                     icon: Icon(Icons.arrow_back),
                     onPressed: () {
                       Navigator.pop(context);
@@ -52,6 +54,7 @@ class _FamilyTreePageState extends State<FamilyTreePage> {
                 Spacer(), // Adds a flexible space
                 if (Navigator.canPop(context))
                   IconButton(
+                    color: Colors.white,
                     icon: Icon(Icons.home),
                     onPressed: () {
                       Navigator.popUntil(context, (route) => route.isFirst);
@@ -87,7 +90,7 @@ class _FamilyTreePageState extends State<FamilyTreePage> {
                 Text(
                   'CHILDRENS',
                   style: TextStyle(
-                    color: Colors.black,
+                    color: Colors.white,
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
@@ -145,7 +148,7 @@ class ChildrenCard extends StatelessWidget {
         );
       },
       child: Card(
-        color: Color(0xFF3366FF),
+        color: Color.fromRGBO(199, 199, 199, 1),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
         ),
@@ -179,7 +182,7 @@ class ChildrenCard extends StatelessWidget {
                 child: Text(
                   child.name,
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.black,
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
                   ),
@@ -187,7 +190,7 @@ class ChildrenCard extends StatelessWidget {
               ),
               Icon(
                 Icons.arrow_forward,
-                color: Colors.white,
+                color: Colors.black,
               ),
             ],
           ),

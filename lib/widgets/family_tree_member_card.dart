@@ -10,7 +10,7 @@ class FamilyTreeMemberCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Color.fromRGBO(199, 199, 199, 1),
+      color: Colors.green[800],
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
       ),
@@ -43,13 +43,26 @@ class FamilyTreeMemberCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  Row(
+                  children: [
                   Text(
                     familyTreeMember.name,
                     style: TextStyle(
-                      color: Color.fromRGBO(46, 125, 50, 1),
+                      color: Color(0xFFFCFCFC),
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
                     ),
+                  ),
+                  SizedBox(width: 8),
+                  Text(
+                    familyTreeMember.familyId,
+                    style: TextStyle(
+                      color: Color(0xFFFCFCFC),
+                      fontWeight: FontWeight.normal,
+                      fontSize: 15,
+                    ),
+                  ),
+                  ],
                   ),
                   SizedBox(height: 4),
                   Row(
@@ -63,7 +76,7 @@ class FamilyTreeMemberCard extends StatelessWidget {
                       Text(
                         familyTreeMember.contact,
                         style: TextStyle(
-                          color: Color.fromRGBO(46, 125, 50, 1),
+                          color: Colors.white,
                           fontSize: 12,
                         ),
                       ),
@@ -81,7 +94,7 @@ class FamilyTreeMemberCard extends StatelessWidget {
                       Text(
                         familyTreeMember.education,
                         style: TextStyle(
-                          color: Color.fromRGBO(46, 125, 50, 1),
+                          color: Colors.white,
                           fontSize: 12,
                         ),
                       ),
@@ -99,7 +112,7 @@ class FamilyTreeMemberCard extends StatelessWidget {
                       Text(
                         familyTreeMember.whatsapp,
                         style: TextStyle(
-                          color: Color.fromRGBO(46, 125, 50, 1),
+                          color: Colors.white,
                           fontSize: 12,
                         ),
                       ),
@@ -117,7 +130,25 @@ class FamilyTreeMemberCard extends StatelessWidget {
                       Text(
                         familyTreeMember.age,
                         style: TextStyle(
-                          color: Color.fromRGBO(46, 125, 50, 1),
+                          color: Colors.white,
+                          fontSize: 12,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 4),
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.bloodtype,
+                        color: Colors.black,
+                        size: 16,
+                      ),
+                      SizedBox(width: 4),
+                      Text(
+                        familyTreeMember.blood,
+                        style: TextStyle(
+                          color: Colors.white,
                           fontSize: 12,
                         ),
                       ),

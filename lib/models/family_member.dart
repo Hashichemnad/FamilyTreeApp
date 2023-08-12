@@ -4,6 +4,7 @@ class FamilyMember {
   final String fatherName;
   final String profileImageUrl;
   final String contact;
+  final String familyId;
 
   FamilyMember({
     required this.id,
@@ -11,6 +12,7 @@ class FamilyMember {
     required this.fatherName,
     required this.profileImageUrl,
     required this.contact,
+    required this.familyId,
   });
 
   factory FamilyMember.fromJson(Map<String, dynamic> json) {
@@ -18,8 +20,9 @@ class FamilyMember {
       id: json['id'],
       name: json['name'],
       fatherName: json['fatherName'],
-      profileImageUrl: json['profileImageUrl'],
+      profileImageUrl:    json['profileImageUrl'], //'../assets/images/logo.png',//
       contact: json['contact'],
+      familyId: json['familyId'],
     );
   }
 }

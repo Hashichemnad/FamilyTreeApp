@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'family_directory_screen.dart';
 import 'family_tree_screen.dart';
 import 'updates_screen.dart';
-import 'login_page.dart'; // Import the LoginPage
-// import '../services/auth_service.dart';
+import 'login_page.dart';
+import 'approval_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -14,20 +15,24 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
-  bool _isAuthenticated = true;
+  bool _isAuthenticated = false;
+  bool _isApproved = false;
 
   @override
   void initState() {
     super.initState();
-    // _checkAuthentication();
+    _checkAuthentication();
   }
 
-  // Future<void> _checkAuthentication() async {
-  //   bool isAuthenticated = await AuthService().isAuthenticated();
-  //   setState(() {
-  //     _isAuthenticated = isAuthenticated;
-  //   });
-  // }
+  Future<void> _checkAuthentication() async {
+    final prefs = await SharedPreferences.getInstance();
+    final sessionId = prefs.getString('session_id') ?? ''; 
+    final isApproved = prefs.getString('isapproved') ?? '';
+    setState(() {
+      _isAuthenticated = sessionId.isNotEmpty;
+      _isApproved=isApproved=='1' ? true : false;
+    });
+  }
 
   final List<Widget> _pages = [
     FamilyDirectoryPage(),
@@ -39,6 +44,9 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     if (!_isAuthenticated) {
       return LoginPage(); // Redirect to LoginPage if not authenticated
+    }
+    if (!_isApproved) {
+      return ApprovalPage(); // Redirect to LoginPage if not authenticated
     }
 
     return Scaffold(

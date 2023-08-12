@@ -40,6 +40,14 @@ class FamilyMemberCard extends StatelessWidget {
             
             SizedBox(height: 4),
             Text(
+              familyMember.familyId,
+              textAlign: TextAlign.center, // Center-align the name
+              style: TextStyle(
+                color: Colors.grey,
+                fontWeight: FontWeight.normal,
+              ),
+            ),
+            Text(
               familyMember.name,
               textAlign: TextAlign.center, // Center-align the name
               style: TextStyle(
@@ -71,8 +79,8 @@ class FamilyMemberCard extends StatelessWidget {
       path: phoneNumber,
     );
 
-    if (await canLaunchUrl(phoneCallUri)) { // Use canLaunch function
-      await launchUrl(phoneCallUri); // Use launch function
+    if (await canLaunchUrl(phoneCallUri)) {
+      await launchUrl(phoneCallUri);
     } else {
       throw 'Could not launch phone call: $phoneCallUri';
     }

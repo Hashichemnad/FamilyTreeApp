@@ -1,17 +1,20 @@
+import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../models/family_member.dart';
-// import 'package:get_mac_address/get_mac_address.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class FamilyMemberService {
-  final String apiUrl; // Add the apiUrl parameter to the class
-  // final _getMacAddressPlugin = GetMacAddress();
-  FamilyMemberService(this.apiUrl); // Constructor that takes the apiUrl as a parameter
+  final String apiUrl; 
+  FamilyMemberService(this.apiUrl); 
 
   Future<List<FamilyMember>> getFamilyMembers() async {
     try {
-      // String macAddress = await _getMacAddressPlugin.getMacAddress() ?? 'Unknown mac address';
-      final response = await http.get(Uri.parse(apiUrl)); // Use the apiUrl here
+      final prefs = await SharedPreferences.getInstance();
+      final sessionId = prefs.getString('session_id') ?? ''; 
+      final response = await http.post(Uri.parse(apiUrl), body: {
+        'sessionId': sessionId,
+      });
       if (response.statusCode == 200) {
         final jsonData = json.decode(response.body);
         List<FamilyMember> familyMembers = [];
@@ -21,6 +24,8 @@ class FamilyMemberService {
         }
         return familyMembers;
       } else {
+          prefs.setString('isapproved', '');
+          prefs.setString('session_id', '');
         throw Exception('Failed to fetch family members');
       }
     } catch (error) {

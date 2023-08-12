@@ -29,7 +29,7 @@ class _UpdatesPageState extends State<UpdatesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
+      backgroundColor: Colors.black,
       body: FutureBuilder<List<Notice>>(
         future: _noticeListFuture,
         builder: (context, snapshot) {
@@ -65,10 +65,32 @@ class NoticeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      // Customize card appearance here
+      color: Color.fromARGB(255, 143, 255, 180),
+      elevation: 4, // Add some elevation for a shadow effect
+      margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       child: ListTile(
-        title: Text(notice.title),
-        subtitle: Text(notice.date),
+        contentPadding: EdgeInsets.all(16), // Add padding to the ListTile
+        title: Text(
+          notice.title,
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        ),
+        subtitle: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: 8),
+            Text(
+              notice.date,
+              style: TextStyle(color: Colors.black,
+              fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 8),
+            Text(
+              notice.details, // Display notice details
+              maxLines: 3, // Limit to 2 lines
+              overflow: TextOverflow.ellipsis,
+            ),
+          ],
+        ),
         onTap: () {
           // Handle tapping on the notice card (if needed)
         },
