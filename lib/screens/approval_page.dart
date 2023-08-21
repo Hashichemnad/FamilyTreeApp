@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../constants.dart';
 
 class ApprovalPage extends StatefulWidget {
   @override
@@ -20,7 +21,7 @@ class _ApprovalPageState extends State<ApprovalPage> {
   Future<void> _approval() async {
 
     // Replace with your PHP API URL for login
-    final String apiUrl = 'http://akkalla.esy.es/app-api/get-validate-session.php';
+    final String apiUrl = AppConstants.validateSession;
     final prefs = await SharedPreferences.getInstance();
     final sessionId = prefs.getString('session_id') ?? ''; 
 
@@ -61,13 +62,23 @@ class _ApprovalPageState extends State<ApprovalPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Akkalla Family'),
+        title: Row(
+          children: [
+            Image.asset(
+              'assets/images/logo.png',
+              height: 30,
+            ),
+            const SizedBox(width: 8),
+            const Text('Family Tree'),
+          ],
+        ),
+        backgroundColor: Colors.green[800],
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children:[
-            Text("Approval Pending"),
+            Text("App will open after approve by admin"),
           ]
           
         ),

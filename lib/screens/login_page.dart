@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../constants.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -9,21 +10,37 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _mobileNumberController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
+  String _errorText = '';
+
   Future<void> _login() async {
-    final String username = _usernameController.text;
+    final String mobileNumber = _mobileNumberController.text;
     final String password = _passwordController.text;
 
-    // Replace with your PHP API URL for login
-    final String apiUrl = 'http://akkalla.esy.es/app-api/get-validate-login.php';
+    if (mobileNumber.isEmpty || password.isEmpty) {
+      setState(() {
+        _errorText = 'Mobile number and password are required';
+      });
+      return;
+    }
+
+    if (!_isValidMobileNumber(mobileNumber)) {
+      setState(() {
+        _errorText = 'Invalid mobile number format';
+      });
+      return;
+    }
+
+    final String apiUrl = AppConstants.validateLogin;
 
     try {
       final response = await http.post(Uri.parse(apiUrl), body: {
-        'username': username,
+        'mobileNumber': mobileNumber,
         'password': password,
       });
+      
       if (response.statusCode == 200) {
         final jsonResponse = json.decode(response.body);
         final sessionId = jsonResponse['sessionId']; 
@@ -34,21 +51,41 @@ class _LoginPageState extends State<LoginPage> {
         
         Navigator.pushReplacementNamed(context, '/home');
       } else {
-        // Failed to log in, show an error message
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Login failed. Please check your credentials.')),
-        );
+        final jsonResponse = json.decode(response.body);
+        final errorMsg = jsonResponse['response']; 
+        setState(() {
+          _errorText = errorMsg;
+        });
       }
     } catch (error) {
-      print('Login error: $error');
+      setState(() {
+        _errorText = 'An error occurred. Please try again later.';
+      });
     }
+  }
+
+  bool _isValidMobileNumber(String mobileNumber) {
+    if(mobileNumber.length>8 && mobileNumber.length<12){
+      return true;
+    }
+    return false;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Akkalla Family'),
+        title: Row(
+          children: [
+            Image.asset(
+              'assets/images/logo.png',
+              height: 30,
+            ),
+            const SizedBox(width: 8),
+            const Text('Family Tree'),
+          ],
+        ),
+        backgroundColor: Colors.green[800],
       ),
       body: Center(
         child: Column(
@@ -57,9 +94,10 @@ class _LoginPageState extends State<LoginPage> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: TextFormField(
-                controller: _usernameController,
+                controller: _mobileNumberController,
+                keyboardType: TextInputType.phone,
                 decoration: InputDecoration(
-                  labelText: 'Username',
+                  labelText: 'Mobile Number',
                   border: OutlineInputBorder(),
                 ),
               ),
@@ -76,7 +114,16 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
             ),
-            SizedBox(height: 24),
+            SizedBox(height: 8),
+            if (_errorText.isNotEmpty)
+              Text(
+                _errorText,
+                style: TextStyle(
+                  color: Colors.red,
+                  fontSize: 14,
+                ),
+              ),
+            SizedBox(height: 16),
             ElevatedButton(
               onPressed: _login,
               child: Text('Login'),

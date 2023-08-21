@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../models/family_member.dart';
 import '../widgets/family_member_card.dart';
 import '../services/family_member_service.dart';
+import '../constants.dart';
 
 class FamilyDirectoryPage extends StatefulWidget {
   const FamilyDirectoryPage({super.key});
@@ -13,8 +14,7 @@ class FamilyDirectoryPage extends StatefulWidget {
 
 class _FamilyDirectoryPageState extends State<FamilyDirectoryPage> {
   final ScrollController _scrollController = ScrollController();
-  final familyMemberService =
-      FamilyMemberService('http://akkalla.esy.es/app-api/get-members.php');
+  final familyMemberService = FamilyMemberService(AppConstants.getMembers);
   List<FamilyMember> familyMembers = []; // List to hold all family members
   List<FamilyMember> _filteredFamilyMembers = []; // List to hold filtered family members
   TextEditingController _searchController = TextEditingController();

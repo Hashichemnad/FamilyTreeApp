@@ -20,7 +20,7 @@ class FamilyMember {
       id: json['id'],
       name: json['name'],
       fatherName: json['fatherName'],
-      profileImageUrl:    json['profileImageUrl'], //'../assets/images/logo.png',//
+      profileImageUrl: json['profileImageUrl'], // '../assets/images/logo.png',// 
       contact: json['contact'],
       familyId: json['familyId'],
     );

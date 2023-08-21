@@ -5,6 +5,7 @@ import 'updates_screen.dart';
 import 'login_page.dart';
 import 'approval_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../constants.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -43,10 +44,10 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     if (!_isAuthenticated) {
-      return LoginPage(); // Redirect to LoginPage if not authenticated
+      return LoginPage(); 
     }
     if (!_isApproved) {
-      return ApprovalPage(); // Redirect to LoginPage if not authenticated
+      return ApprovalPage();
     }
 
     return Scaffold(
@@ -54,11 +55,11 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Row(
           children: [
             Image.asset(
-              '../assets/images/logo.png',
+              AppConstants.imageLogo,
               height: 30,
             ),
             const SizedBox(width: 8),
-            const Text('AKKALLA FAMILY'),
+            const Text('Family Tree'),
           ],
         ),
         backgroundColor: Colors.green[800],

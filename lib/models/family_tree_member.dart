@@ -1,4 +1,3 @@
-// models/family_tree_member.dart
 class FamilyTreeMember {
   final String id;
   final String name;
@@ -9,6 +8,7 @@ class FamilyTreeMember {
   final String age;
   final String familyId;
   final String blood;
+  final String count;
   final FamilyTreeMember? spouse;
   final List<FamilyTreeMember> children;
 
@@ -22,6 +22,7 @@ class FamilyTreeMember {
     required this.age,
     required this.familyId,
     required this.blood,
+    required this.count,
     this.spouse,
     this.children = const [],
   });
@@ -30,13 +31,14 @@ class FamilyTreeMember {
     return FamilyTreeMember(
       id: json['id'],
       name: json['name'],
-      profileImageUrl:   json['profileImageUrl'],  //'../assets/images/logo.png',//
+      profileImageUrl: json['profileImageUrl'],  // '../assets/images/logo.png',// 
       contact: json['contact'],
       education: json['education'],
       whatsapp: json['whatsapp'],
       age: json['age'],
-      familyId: json['familyId'],
+      familyId: "[ "+json['familyId']+" ]",
       blood: json['blood'],
+      count: "[ Members : "+json['count']+" ]",
       spouse: json['spouse'] != null ? FamilyTreeMember.fromJson(json['spouse']) : null,
       children: json['children'] != null
           ? (json['children'] as List).map((child) => FamilyTreeMember.fromJson(child)).toList()

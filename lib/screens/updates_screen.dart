@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '../models/notice.dart'; // Import your Notice model
-import '../services/notice_service.dart'; // Import your NoticeService
+import '../models/notice.dart';
+import '../services/notice_service.dart';
+import '../constants.dart';
 
 class UpdatesPage extends StatefulWidget {
   @override
@@ -9,7 +10,7 @@ class UpdatesPage extends StatefulWidget {
 
 class _UpdatesPageState extends State<UpdatesPage> {
   late Future<List<Notice>> _noticeListFuture;
-  final NoticeService _noticeService = NoticeService('http://akkalla.esy.es/app-api/get-notices.php');
+  final NoticeService _noticeService = NoticeService(AppConstants.getNotice);
 
   @override
   void initState() {

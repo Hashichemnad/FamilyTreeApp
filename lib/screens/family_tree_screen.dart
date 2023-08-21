@@ -3,6 +3,7 @@ import '../models/family_tree_member.dart';
 import '../widgets/family_tree_member_card.dart';
 import '../services/family_member_tree_service.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import '../constants.dart';
 
 class FamilyTreePage extends StatefulWidget {
   final String familyMemberId;
@@ -15,8 +16,7 @@ class FamilyTreePage extends StatefulWidget {
 
 class _FamilyTreePageState extends State<FamilyTreePage> {
   late Future<FamilyTreeMember> _familyTreeMemberFuture;
-  final FamilyMemberTreeService familyMemberTreeService =
-      FamilyMemberTreeService('http://akkalla.esy.es/app-api/get-member-tree.php');
+  final FamilyMemberTreeService familyMemberTreeService = FamilyMemberTreeService(AppConstants.getMemberTree);
 
   @override
   void initState() {
@@ -79,13 +79,12 @@ class _FamilyTreePageState extends State<FamilyTreePage> {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(height: 8), // Adjust the top gap
+                SizedBox(height: 8), 
                 FamilyTreeMemberCard(familyTreeMember: familyTreeMember),
-                SizedBox(height: 8), // Adjust the gap between main member and spouse
-                // Display spouse details using the SpouseCard widget only if spouse exists
+                SizedBox(height: 8), 
                 if (familyTreeMember.spouse != null) ...[
                   SpouseCard(spouse: familyTreeMember.spouse!),
-                  SizedBox(height: 8), // Adjust the gap between spouse and children
+                  SizedBox(height: 8),
                 ],
                 Text(
                   'CHILDRENS',
@@ -95,9 +94,7 @@ class _FamilyTreePageState extends State<FamilyTreePage> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: 8), // Adjust the gap between heading and children
-                // Display children cards using the ChildrenCard widget
-                // For example:
+                SizedBox(height: 8), 
                 Expanded(
                   child: ListView.builder(
                     itemCount: familyTreeMember.children.length,
@@ -148,7 +145,7 @@ class ChildrenCard extends StatelessWidget {
         );
       },
       child: Card(
-        color: Color.fromRGBO(199, 199, 199, 1),
+        color: Color.fromRGBO(163, 163, 163, 1),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
         ),
@@ -177,16 +174,35 @@ class ChildrenCard extends StatelessWidget {
                 ),
                 
               ),
-              SizedBox(width: 16),
+              SizedBox(width: 6),
               Expanded(
-                child: Text(
-                  child.name,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
+                child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Column(
+                  children: [
+                  Text(
+                    child.name,
+                    style: TextStyle(
+                      color: Color(0xFFFCFCFC),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                    ),
                   ),
-                ),
+                  SizedBox(width: 8),
+                  Text(
+                    child.count,
+                    style: TextStyle(
+                      color: Color(0xFFFCFCFC),
+                      fontWeight: FontWeight.normal,
+                      fontSize: 15,
+                    ),
+                  ),
+                  ],
+                  ),
+                ],
+              ),
               ),
               Icon(
                 Icons.arrow_forward,

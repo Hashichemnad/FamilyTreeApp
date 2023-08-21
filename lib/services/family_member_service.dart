@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../models/family_member.dart';
@@ -24,8 +23,8 @@ class FamilyMemberService {
         }
         return familyMembers;
       } else {
-          prefs.setString('isapproved', '');
-          prefs.setString('session_id', '');
+        prefs.setString('isapproved', '');
+        prefs.setString('session_id', '');
         throw Exception('Failed to fetch family members');
       }
     } catch (error) {

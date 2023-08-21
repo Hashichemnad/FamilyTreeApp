@@ -11,10 +11,9 @@ class FamilyTreeApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // _configureFCM(); // Call the function to configure FCM
 
     return MaterialApp(
-      title: 'AKKALLA FAMILY',
+      title: 'Family Tree',
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
