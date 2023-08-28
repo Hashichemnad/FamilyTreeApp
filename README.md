@@ -1,8 +1,8 @@
 # Family Directory | Family Tree App
 
-> FLUTTER
-> PHP
-> MYSQL 
+> - FLUTTER
+> - PHP
+> - MYSQL 
 
 - [ ] Setup Backend
 
